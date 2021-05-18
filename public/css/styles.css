@@ -1,0 +1,1422 @@
+body {
+  background-color: #f5f5f5;
+}
+h1 {
+  color: blue;
+}
+
+@font-face {
+    font-family: 'firaSansMedium'; 
+    src: url(resources/fonts/FiraSans-Bold.ttf);
+}
+
+.container{
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #1a3767;
+  margin-bottom: 25px;
+  box-shadow: 0px 2px 20px 0px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.fa-search:before{
+  content: "resources/lupa.png";
+}
+
+.topnav .search-container {
+  float: left;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.logotipo {
+   background-color:#1B3967;"
+   float: left;
+   margin-left:15px;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  background: #ffffff;
+  border-radius: 0px 25px 25px 0px;
+}
+
+.topnav .search-container button {
+  float: left;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-left: 10px;
+  background: #ffffff;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px 0px 0px 25px;
+}
+
+.centrarCarousel{
+  max-width:375px;
+  margin-inline: auto !important;
+}
+
+.card-deck {
+    display: flex;
+    grid-gap: .5rem;
+  max-width: 300px;
+    margin-inline: auto;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+.card-img-top{
+  width:50%;
+  margin: auto;
+  border-radius: 50%;
+  margin-top:20px;
+  background-color: #e9ecef;
+  z-index: 1;
+  max-width: 70px;
+  
+}
+
+.card{
+  border: 0px;
+  width: 50%;
+  height: 210px;
+  background-color:#f5f5f5 !important;
+}
+
+.card .estrella{
+  position: relative;
+    top: 10px;
+    left: 60px;
+    z-index: 2;
+    margin-bottom: -30px;
+    margin-left: -30px;
+}
+  
+.card-body{
+  background-color: #f2f2f2;
+  position: relative;
+    top: -20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 3px 0 rgb(0 0 0 / 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+.card-title{
+  color: #1a3767;
+  font-size: 12px;
+  text-align: center;
+  margin-top:5px;
+  height: 36px;
+}
+
+.card-text{
+  color: #6c757db3;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 0;
+  
+}
+
+.img-info-card{
+  float: right;
+    position: relative;
+    top: 8px;
+  left: 20px;
+}
+
+.jugadores-cercanos p{
+  color: #6c757db3;
+  font-size: 12px;
+  margin-top: -5px;
+}
+
+.col-jugadores{
+  padding: 15px;
+    margin: 0;
+}
+
+.inline{
+  float: left;
+  text-align: left;
+}
+.filaRegistroJugador .inline{
+  padding: 0;
+}
+
+.jugadores-nombre p{
+  color: #1a3767;
+  font-size: 12px;
+  line-height: 50px;
+}
+
+.jugadores-atributos p{
+  color: #6c757db3;
+  font-size: 12px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.jugadores-foto {
+  height: 50px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #007bff59;
+  z-index: 1;
+  margin-left: -7px;
+  padding: 100%;
+}
+.fila-jugadores{
+  background-color:#f2f2f2;
+  border-radius:10px 25px 25px 10px;
+  margin-top: 10px;
+  height: 50px;
+  box-shadow: 0px 2px 3px 0 rgb(0 0 0 / 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+}
+.imagen-lista{
+  border-radius: 50%;
+  width:50%;
+  margin: auto;
+  float: right !important; 
+}
+
+#postsCarousel {
+  margin-top: 30px;
+}
+
+/* equal card height */
+.row-equal > div[class*='col-'] {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+.row-equal .card {
+   width: 100%;
+}
+
+/* ensure equal card height inside carousel */
+.carousel-inner>.row-equal.active, 
+.carousel-inner>.row-equal.next, 
+.carousel-inner>.row-equal.prev {
+    display: flex;
+}
+
+/* prevent flicker during transition */
+.carousel-inner>.row-equal.active.left, 
+.carousel-inner>.row-equal.active.right {
+    opacity: 0.5;
+    display: flex;
+}
+
+
+/* control image height */
+.card-img-top-250 {
+    max-height: 250px;
+    overflow:hidden;
+
+}
+
+.carousel-control-next{
+  background-color:red;
+  float: right;
+  z-index: 0;
+}
+
+.carousel-control-prev{
+  background-color:red;
+  float: left;
+  z-index: 0;
+}
+
+
+
+.carousel-inner > div.row.row-equal.carousel-item.active.m-t-0 > div.col-4{
+  /* Columnas del carrusel de cartas */
+  padding-right: 5px;
+    padding-left: 5px;
+}
+
+.imgLocalizacion{
+  float: left;
+    margin-inline: 10px;
+}
+
+.hacerEspacio{
+   height: 60px;
+}
+.botnav {
+  overflow: hidden;
+  background-color: #f2f2f2;
+  height: 60px;
+  box-shadow: 0px -2px 20px 0px;
+}
+
+.botnav .search-container {
+  float: left;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.botnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  background: #ffffff;
+  border-radius: 0px 25px 25px 0px;
+}
+
+.botnav .search-container button {
+  float: left;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-left: 10px;
+  background: #ffffff;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px 0px 0px 25px;
+}
+
+.imagen-abajo{
+  margin: auto;
+  margin-top: 12.5px;
+  width: 35px;
+  height: 35px;
+}
+
+.col-div-abajo{
+  flex: 0 0 20%;
+    max-width: 20.%;
+}
+
+.col-div-abajo{
+  flex: 0 0 20%;
+    max-width: 20.%;
+}
+
+.imagen-abajo-mas{
+  margin-top: 2px;
+    background-color: white;
+    padding: 10px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+
+
+.div-abajo{
+  height: 50px;
+}
+
+/* PAGINAS DE INICIO */
+
+.fondoInicio{
+  background: url("../resources/fondo.jpg") no-repeat center center fixed;
+  background-size: cover;
+  background-position: 86% 50%; 
+}
+
+.logoRegistro{
+  display: block;
+  height:50px;
+  width:120px;
+  margin: auto;
+  margin-top:50px;
+  margin-bottom: 100px;
+}
+
+.logoRegistro-grande{
+  display: block;
+  height:100px;
+  width:240px;
+  margin: auto;
+  margin-top:50px;
+  margin-bottom: 50px;
+}
+
+.container-form{
+      margin-inline: 30px;
+    max-width: 370px !important;
+}
+
+.formInput{
+  height: 36px !important;
+    border-radius: 36px !important;
+    background-color: #ffffffa3 !important;
+    border: 1px solid rgb(0 0 0 / 8%) !important;
+  margin-bottom:5px;
+}
+
+.form-label{
+  margin-bottom:10px;
+  color:white;
+  margin-left:10px;
+}
+
+.btnIniciar {
+    background-color: #fff !important;
+    border-color: #fff !important;
+  height: 36px !important;
+    border-radius: 16px !important;
+    padding-inline: 20px !important;
+  margin-top: 15px;
+}
+
+.terminosCondiciones {
+  width: 100%;
+  color: #fff;
+  font-size:10px;
+  margin-left: 25px;
+  margin-top: 20px;
+}
+
+.btnEnlace {
+    background-color: rgb(0 0 0 / 8%) !important;
+    border-color: #fff !important;
+    border-radius: 30px;
+    padding-inline: 20px !important;
+  margin-top: 20px !important;
+  margin-inline: auto ;
+  border-style: solid !important;
+    border-width: 2px !important;
+  height: 3.5em;
+  padding-top: 0.9em;
+  font-size: 18px !important;
+  color: #fff !important;
+}
+
+.rowEnmedioDeForm {
+   margin-bottom:10px;
+   margin-top:10px;
+}
+
+.mySelect {
+    background-color: rgb(0 0 0 / 8%) !important;
+    border-color: #fff !important;
+  border-style: solid !important;
+    border-width: 2px !important;
+  height: 36px !important;
+    border-radius: 36px !important;
+  color: #fff !important;
+  width: 100%;
+  padding-inline: 1em;
+}
+
+.btnRegister {
+    width: 100%;
+  border-radius: 20px !important;
+  height: 2.5em !important;
+  padding:0;
+}
+
+.form-buttons-label{
+  color:white;
+  margin-bottom:10px;
+  font-weight:bold;
+  margin-top: 25px;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+  color:white;
+}
+
+.cartaPerfilHard{
+  margin-top:20px;
+  background-color: #f5f5f5;
+  width: 90%;
+  max-width: 350px;
+  height: 600px;
+  margin-inline:auto;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.fa-times{
+  float:right;
+  font-size:32px !important;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+.containerCartaPerfil{
+  margin-top: 40px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.containerCartaPerfil p{
+    margin-top: 20px;
+    text-align: left;
+    font-size: 21px;
+}
+
+.textoTituloCartaPerfil{
+  color: #1B3967;
+  font-weight: bold;
+}
+
+.jugadores-fotoEresTu{
+  height: 32px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #007bff59;
+  z-index: 1
+}
+
+.tdNombre{
+  color: #1B3967;
+  font-weight: bold;
+  padding-inline: 0 !important;
+}
+
+.soyYo{
+  background-color: #495057;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px;
+    color: #f8f9fa;
+    font-size: 12px;
+  font-weight: bold;
+    text-align: center;
+}
+
+.noSoyYo{
+  margin-top: 30px;
+    background-color: #e4e4df;
+    width: 80% !important;
+    margin-inline: auto;
+    border-radius: 20px;
+    padding: 10px;
+    padding-bottom: 25px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.btnCrearPerfil{
+  color: #fff;
+    background-color: #1B3967;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 8px;
+    padding-inline: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/*Especifico mensajeria*/
+
+.topnavMensajes {
+  /*overflow: hidden;*/
+  background-color: #efefeb;
+  margin-bottom: 10px;
+  height:50px;
+}
+
+.atrasIcono{
+  font-size: 36px !important; 
+  margin-left:10px;
+  margin-top:7px;
+}
+.mensaje-foto {
+  height: 30px;
+  width: 30px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #007bff59;
+  margin-top: 10px;
+  float: left;
+}
+
+.nombreContacto{
+  float: left;
+    margin-top: 12.5px;
+    margin-left: 20px;
+  font-weight: bold;
+  max-width: 75%;
+  white-space: nowrap;
+    overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.myElipsis{
+  float: left;
+    height: 50px;
+    font-size: 30px !important;
+  border-width: 0 !important;
+}
+.labelFecha{
+  margin-inline: auto;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.contenedorMensajes{
+  margin-inline: auto;
+  display: flow-root;
+  margin-bottom: 20px;
+}
+
+.dropdown-menu li{
+  padding:5px;
+}
+.dropdown-menu li:hover{
+  background-color: lightgrey;
+  font-weight: bold;
+}
+
+.mensaje{
+  border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+    padding-inline: 20px;
+}
+.otro{
+  float:left;
+  background-color: #efefeb;
+}
+
+.tu{
+  float:right;
+  background-color: #dee2e6;
+}
+
+.hora{
+  float:right;
+  font-size: 12px;
+    margin-bottom: -5px;
+    margin-right: -5px;
+  margin-top: -10px;
+    color: #6c757d;
+}
+
+.escribirTexto{
+  border-radius: 25px !important;
+  padding-inline: 15px !important;
+  height: 40px;
+  margin-inline: 10px;
+    width: 80%;
+  border-color: #e9ecef !important;
+  border-style: solid !important;
+    border-width: 2px !important;
+}
+
+.btnEnviarMensaje{
+  background: #ffffff;
+  border-radius: 50%;
+    height: 40px;
+    width: 40px;
+  border-color: #e9ecef !important;
+  border-style: solid !important;
+    border-width: 2px !important;
+}
+
+/*Ficha de jugador*/
+
+.cartaFicha{
+  width: 90%;
+  max-width: 350px;
+  height: 600px !important;
+  margin-top:75px !important;
+  background-color: #ececea !important;
+  margin-bottom: 80px !important;
+}
+
+.btnFichaJugador{
+  color: #fff;
+    border-radius: 15px;
+    margin-inline: auto;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+  margin-top: 10px;
+}
+
+.imgFichaJugador{
+	width: 70%;
+	padding: 35%;
+	margin: auto;
+	border-radius: 50%;
+	background-color: #e9ecef;
+	z-index: 1;
+	position: relative;
+	top: -100px;
+	margin-bottom: -125px;
+}
+
+.estrellaFicha{
+  position: relative;
+    top: -80px;
+    left: 70px;
+    z-index: 2;
+    margin-bottom: -30px;
+    margin-left: -30px;
+    width: 50px;
+    height: 50px;
+}
+
+.info{
+  position: relative;
+    top: -30px;
+    left: 20px;
+    z-index: 2;
+    margin-bottom: -45px;
+    margin-left: -45px;
+    width: 40px;
+    height: 40px;
+}
+
+.bajoNombre{
+  color: #1B3967;
+    font-size: 12px !important;
+    text-align: center !important;
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+}
+
+.btnVerPerfil{
+  color: #fff;
+    border-radius: 15px;
+    margin-inline: auto;
+    width: 40%;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 10px;
+    background-color: #6c757d;
+}
+
+.descripCionJugador{
+    font-size: 0.8em !important;
+}
+   
+.tableFicha{
+  margin-inline: 10px;
+}
+
+.filaJugador{
+  background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 40px;
+  width:90%;
+  margin-inline:auto;
+}
+
+.tdFicha{
+  width: 33%;
+  padding: 5px;
+    line-height: 30px;
+  font-weight: bold;
+    color: #6c757d;
+  padding-inline: 15px;
+}
+
+.tdFichaCorto{
+  width: 50%;
+  padding: 5px;
+    line-height: 30px;
+    color: #6c757d;
+  padding-inline: 15px;
+  font-size: 12px;
+}
+
+.tdFichaLargo{
+  min-width: 50%;
+  padding: 5px;
+    line-height: 30px;
+    color: #1B3967;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tdFichaEntero{
+  width: 100%;
+  padding: 5px;
+    line-height: 30px;
+    color: #6c757d;
+  padding-inline: 15px;
+  font-size: 12px;
+}
+
+.filaGolpes{
+  background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 80px;
+  width:90%;
+  margin-inline:auto;
+}
+
+.golpes{
+  cursor: pointer;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 12px;
+    text-align: center;
+    width: fit-content;
+    float: left;
+    margin-inline: 1px;
+    color: #1B3967;
+    border: 1px;
+    border-style: solid;
+    border-color: #1B3967;
+    font-weight: bold;
+}
+
+/*Invitar amigo / Encontrar amigo*/
+
+.cartaAmigosHard{
+  margin-top:50px;
+  background-color: #f5f5f5;
+  width: 90%;
+  max-width: 350px;
+  height: 450px;
+  margin-inline:auto;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px -2px 20px 0px;
+}
+
+.containerCartaAmigos{
+  margin-top: 40px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.containerCartaAmigos p{
+    margin-top: 20px;
+  margin-bottom: 40px;
+    text-align: center;
+    font-size: 14px !important;
+}
+
+.btnAmigos{
+  color: #fff;
+    border-radius: 15px;
+    margin-inline: auto;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+  margin-top: 10px;
+}
+
+.textoEnvioForm{
+  margin-top: 20px;
+    margin-left: 5px;
+    color: #1B3967;
+}
+
+/*Busqueda mensajes*/
+
+.buscarJugadoresDiv{
+  margin-inline: auto;
+}
+
+.buscarJugadoresDiv .botonLupa{
+    float: left;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-left: 10px;
+    background: #ffffff;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px 0px 0px 25px;
+}
+
+.topnavBuscarMensajes{
+  overflow: hidden;
+    background-color: #efefeb;
+    margin-bottom: 10px;
+    height: 105px;
+}
+
+.volver{
+  width: 30px;
+    height: 30px;
+    font-size: 30px !important;
+    padding: 10px;
+  margin-inline: 15px;
+}
+
+.textoTituloCartaBusquedaMensajes{
+  color: #1B3967;
+    font-weight: bold;
+    margin-inline: auto;
+    position: relative;
+    left: -30px;
+    margin-top: 5px;
+}
+
+.tableMensajes{
+  width: 90% !important;
+  margin-inline: auto;
+  max-width: 360px;
+  margin-top:50px;
+}
+
+.fotoListaMensaje{
+  height: 50px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #007bff59;
+  z-index: 1
+}
+
+.nombreEnMensaje{
+  color: #1B3967;
+  font-weight: bold;
+}
+
+.descripcionEnMensaje{
+  width:60%;
+  font-size: 0.8em;
+  margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  white-space: nowrap;
+}
+
+.mensajesTr{
+  line-height: 1em;
+}
+
+/*Buscar jugadores*/
+
+.divFiltros{
+  width: 95%;
+  margin-inline: auto;
+}
+
+.mySelectBusqueda {
+    background-color: #f5f5f5;
+    border: none;
+    font-size: 12px;
+    text-align: center;
+    width: fit-content;
+    margin-inline: 1px;
+    color: #1B3967;
+    border: 1px;
+    font-weight: bold;
+}
+
+.divOrden{
+  width: 95%;
+  margin-inline: auto;
+  margin-top: 60px;
+}
+
+.buscadorDistanciaContainer{
+  width: 80%;
+    margin-inline: auto;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0px 2px 3px 0 rgb(0 0 0 / 15%), 0 6px 20px 0 rgb(0 0 0 / 15%);
+    margin-top: 10px;
+  display: none;
+}
+
+.buscadorDistanciaContainer input[type=text] {
+  padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    background: #ffffff;
+    border-radius: 0px 25px 25px 0px;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.buscadorDistanciaContainer  .botonProvincia {
+  float: left;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-left: 10px;
+  background: #ffffff;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px 0px 0px 25px;
+}
+
+.sexosFiltro{
+  cursor: pointer;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 15px;
+    line-height: 0px;
+    text-align: center;
+    width: fit-content;
+    float: left;
+    margin-inline: 1px;
+    color: #1B3967;
+    border: 2px;
+    border-style: solid;
+    border-color: #1B3967;
+    font-weight: bold;
+}
+
+.btnDesplegables{
+    color: #fff;
+    background-color: #1B3967;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+    padding-inline: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: 72px;
+}
+
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: red;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.filaBusquedaJugadores{
+    border-radius: 10px 30px 30px 10px;
+    margin-top: 10px;
+    height: 60px;
+    display: flex;
+    line-height: 25px;
+}
+
+.jugadoresAtributos{
+  color: #6c757db3;
+  font-size: 12px;
+    font-weight: bold;  
+}
+
+.fotoBusquedaJugadores{
+  height:45px;
+  width:45px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #007bff59;
+  z-index: 1;
+  margin-left: -6px;
+}
+
+.progress {
+    width: 27px;
+    height: 27px !important;
+    float: left;
+    line-height: 27px;
+    background: none;
+    box-shadow: none;
+    position: relative
+}
+
+.progress-value {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    font-size: 11px;
+    color: #1B3967;
+    line-height: 27px;
+    position: relative;
+    top: 1px;
+    left: -3px;
+    z-index: 1;
+}
+
+/*Perfil jugadores*/
+
+.fotoPerfil{
+    width: 125px;
+    height: 125px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: #007bff59;
+}
+
+/* CIRCULOS */
+.percent1, .percent2, svg, circle {
+    width: 125px;
+    height: 125px;
+}
+
+circle {
+    position: absolute;
+  fill: none;
+    stroke-width: 15;
+    transform: translate(10px, 10px); /* This is to position it in the center */
+    stroke-dasharray: 345;
+    stroke-linecap: round;
+}
+
+.percent1 circle:nth-child(2) {
+    stroke: #f5f5f5;
+    animation: percent 1.5s linear;
+    animation-delay: 1s;
+}
+
+/* Animacion */
+@keyframes percent {
+    0% {
+        stroke-dashoffset: 0;
+       }
+}
+
+.percent1 circle:nth-child(2) {
+    stroke-dashoffset: calc(345 - (345 * 20) / 100); /* 75 es el % del circulo, cambiar para más o menos cerrado */
+    stroke: #f5f5f5;
+    animation: percent 1.5s linear;
+    animation-delay: 1s;
+}
+
+.number {
+    position: relative;
+    bottom: 190px;
+    right: -50px;
+    color: #fff;
+}
+
+h2 {
+    font-size: 48px;
+}
+
+span {
+    font-size: 24px;
+    /*opacity: .7;*/
+}
+
+.percent1 span {
+    color: gold;
+}
+
+.percent2 span {
+    color: salmon;
+}
+/* /CIRCULOS */
+
+.fotoCirculo{
+  height: 120px;
+    margin: 4px;
+    float: right;
+    position: absolute;
+    z-index: -1;
+}
+
+.fotoCirculoPequeño{
+  height: 28px;
+    position: fixed;
+    margin-left: -7px;
+}
+
+.textoDentro {
+    position: absolute;
+    top: 50%;
+    left: 47%;
+    transform: translate(-80%, -50%);
+    float: right;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.textoDentroArriba {
+    position: absolute;
+    top: 36%;
+    left: 50%;
+    transform: translate(-80%, -50%);
+    float: right;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #6c757db3;
+}
+
+.perfilNombreJugador{
+  color: #1B3967;
+  font-weight: bold;
+}
+
+.textoGolpes{
+  margin-inline: 10px;
+    color: #6c757d;
+    font-size: 14px;
+    line-height: 28px;
+}
+
+.golpesFicha{
+    border-radius: 10px;
+    padding: 4px;
+    font-size: 12px;
+    text-align: center;
+    width: fit-content;
+    float: left;
+    margin-inline: 2px;
+    color: #1B3967;
+    border: 1px;
+    border-style: solid;
+    border-color: #6c757d;
+    font-weight: bold;
+}
+
+.textoGolpesAzul{
+  margin-inline: 10px;
+    color: #1B3967;
+    font-size: 14px;
+    line-height: 28px;
+  font-weight: bold;
+}
+
+.btnPerfilJugador{
+  color: #fff;
+    border-radius: 15px;
+    margin-inline: auto;
+    width: 45%;
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+    padding-inline: 10px !important;
+    border: 0;
+}
+
+.contenedorPerfilVacío{
+  height: 100px;
+  border-radius: 15px;
+  background-color: #efefeb;
+  text-align: center;
+  width: 100%;
+  color: #545b62;
+  margin-bottom: 10px;
+}
+
+.contenedorPerfilLleno{
+  height: 111px;
+    border-radius: 15px;
+    background-color: #efefeb;
+    text-align: center;
+    width: 100%;
+    color: #545b62;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.fechaPartidoPequeño{
+  font-size: 10px;
+    margin-top: 5px;
+  width: 100%;
+}
+
+.filaSuperiorResultados{
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #adb5bd;
+}
+
+.filaInferiorResultados{
+  width: 100%;
+  height: 40px;
+}
+
+.mediaFilaResultadosNombre{
+  line-height:20px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #1B3967;
+}
+
+.mediaFilaResultadosPR{
+  line-height:20px;
+  font-size: 10px;
+}
+
+.colResultados{
+  width: 25%;
+  float: left;
+}
+
+.fotoFilaResultados{
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+  margin-left: 15px;
+  border-radius: 50%;
+  background-color: #007bff59;
+  float: left;
+}
+
+.fotoTrofeoResultados{
+  height: 20px;
+    margin: 10px;
+}
+
+.setGanado{
+  font-weight: bold;
+  color: #1B3967;
+  font-size: 25px;
+  margin-inline: 5px;
+  float: left;
+}
+
+.setPerdido{
+  font-weight: bold;
+  color: #95a8c5;
+  font-size: 25px;
+  margin-inline: 5px;
+  float: left;
+}
+
+/*Registros de partido*/
+
+.cuerpoRegistro{
+  padding: 15px;
+  margin-top: -25px;
+}
+
+.textosRegistroPartidos{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.registroNombreJugador{
+  color: #1B3967;
+    font-weight: bold;
+    line-height: 50px;
+    font-size: 1.2em;
+}
+
+.filaRegistroJugador{
+  background-color: #efefeb;
+    border-radius: 10px 25px 25px 10px;
+    margin-top: 5px;
+  margin-bottom: 5px;
+    height: 50px;
+    box-shadow: 0px 2px 3px 0 rgb(0 0 0 / 15%), 0 6px 20px 0 rgb(0 0 0 / 15%);
+}
+
+.setsRow{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.set{
+  color: #1B3967;
+  font-weight: bold;
+  text-align: center;
+}
+
+.numeroSet{
+  color: #1B3967;
+  font-weight: bold;
+  text-align: center;
+  font-size:40px;
+}
+
+.resultadoSet{
+  background-color: #e4e4de;
+  box-shadow: 0px 2px 3px 0 rgb(0 0 0 / 15%), 0 6px 20px 0 rgb(0 0 0 / 15%);
+  height: 38px;
+  width: 60px;
+  margin-top: 10px;
+  color: #1B3967;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+  float: left;
+}
+
+.resultadoSet .setGanado{
+  border-color: gold;
+  border-style: solid;
+  border-width: 2px;
+  height: 42px;
+  margin-left: 0px;
+}
+
+.formHoraPartido{
+  width: 100%;
+}
+
+.divDeFecha{
+  background-color: #efefeb;
+    border: none;
+    box-shadow: 0px 2px 3px 0 rgb(0 0 0 / 15%), 0 6px 20px 0 rgb(0 0 0 / 15%);
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    color: #adb5bd;
+    border-radius: 10px;
+}
+
+.divHoras{
+  margin-top: 10px;
+}
+
+.divHora{
+  background-color: #efefeb;
+    border: none;
+    box-shadow: 0px 2px 3px 0 rgb(0 0 0 / 15%), 0 6px 20px 0 rgb(0 0 0 / 15%);
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    color: #adb5bd;
+    border-radius: 10px;
+}
+
+.partidoFoto{
+  height:50px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #007bff59;
+  z-index: 1;
+  margin-left: -3px;
+  
+}
+
+.equipo{
+  width: 100%;
+  margin-inline: auto;
+  padding: 5%;
+  background-color: #e9ecef;
+  border-radius: 15px;
+  border-color: darkgray;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.equipoGanador{
+  border-color: gold;
+}
+
+.iconoTrofeo{
+  height: 25px;
+    margin-left: 220px;
+    margin-top: -5px;
+}
+
+.rowTextoEquipos{
+  padding-inline: 10px;
+}
