@@ -1,6 +1,10 @@
 <?php
 
 Route::redirect('/', '/login');
+
+// Horarios
+Route::resource('schedule' , 'ScheduleController');
+
 Route::get('/home', function () {
     $user = Auth::user();
     $roles = $user->roles()->get();
@@ -79,6 +83,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('messenger/{topic}', 'MessengerController@destroyTopic')->name('messenger.destroyTopic');
     Route::post('messenger/{topic}/reply', 'MessengerController@replyToTopic')->name('messenger.reply');
     Route::get('messenger/{topic}/reply', 'MessengerController@showReply')->name('messenger.showReply');
+
+   
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password

@@ -170,6 +170,7 @@ return [
     'player'         => [
         'title'          => 'Jugadores',
         'title_singular' => 'Jugador',
+        'calendar'       => 'Disponibilidad',
         'fields'         => [
             'id'                    => 'ID',
             'id_helper'             => ' ',

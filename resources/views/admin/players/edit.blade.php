@@ -1,4 +1,11 @@
 @extends('layouts.admin')
+
+@section('styles')
+
+    @include('partials.styles_script')
+    
+@endsection
+
 @section('content')
 
 <div class="card">
@@ -75,6 +82,15 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.player.fields.user_helper') }}</span>
             </div>
+
+            <div class="card-header">
+                {{ trans('cruds.player.calendar') }}
+            </div>
+
+            <div class="form-group">
+                <div id='calendar'></div>
+            </div>
+
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
@@ -84,6 +100,8 @@
     </div>
 </div>
 
+@include('partials.modal')
 
 
 @endsection
+
