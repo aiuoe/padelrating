@@ -95,6 +95,10 @@
                 {{ trans('cruds.player.calendar') }}
             </div>
 
+            <div id="spinner-hidden" class="spinner spinner-hidden" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+
             <div class="form-group">
                     <div id='calendar'></div>
             </div>

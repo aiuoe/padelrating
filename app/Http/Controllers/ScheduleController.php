@@ -66,6 +66,8 @@ class ScheduleController extends Controller
             ]);
 
             return response()->json(['success'=>'Registro Agregado']);
+        }else{
+            return response()->json(['error'=> 'Deberias Eliminar']);
         }
 
        
@@ -117,11 +119,14 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Schedule $schedule , Request $request , $id)
+    public function destroy(Request $request , Schedule $schedule)
     {
         $data = $request->all();
-
+        $consulta = Schedule::find($data['id']);
+        $consulta->delete();
+        return response()->json(['success'=>'Registro Eliminado']);
         logger($data);
+        logger($consulta);
     }
 
 }

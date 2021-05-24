@@ -17,7 +17,7 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->unsigned();
-            $table->string('title')->default('Disponible'); 
+            $table->string('title')->default('Listo'); 
             $table->foreign('user_id')->references('id')->on('users');
             $table->dateTime('start');
             $table->dateTime('end');
