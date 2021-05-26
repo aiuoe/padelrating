@@ -9,7 +9,7 @@
             top: -20px;
         }
 
-        .fila-jugadores {
+        /* .fila-jugadores {
             height: 80px;
         }
 
@@ -17,7 +17,7 @@
             margin-top: 13px;
             position: relative;
             right: 10px;
-        }
+        } */
 
     </style>
 
