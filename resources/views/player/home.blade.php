@@ -87,9 +87,9 @@
                 <p>
                     <a href="{{ action('Player\PlayersController@getPlayer', $nearplayer->id) }}">{{ $nearplayer->name}} {{ $nearplayer->surname}}</a>
 
-                    <button type="button" id="button" class="btn btn-primary home-btn-disponibilidad" data-toggle="modal" data-target="#exampleModal">
+                    {{-- <button type="button" id="button" class="btn btn-primary home-btn-disponibilidad" data-toggle="modal" data-target="#exampleModal">
                         Disponibilidad
-                    </button>
+                    </button> --}}
                 </p>
 
                

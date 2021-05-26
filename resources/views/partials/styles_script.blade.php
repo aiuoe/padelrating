@@ -21,13 +21,6 @@
             eventBackgroundColor: '#1fbf1f',
             eventBorderColor: '#1fbf1f', 
             displayEventTime: false ,
-            views: {
-                timeGrid: { weekday: 'short', month: 'numeric', day: 'numeric', omitCommas: true 
-                },
-                day: {
-                    columnHeaderFormat: 'dddd'
-                }
-            },
             slotLabelFormat: [
                 {
                     hour: '2-digit',

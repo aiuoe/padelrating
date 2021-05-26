@@ -28,7 +28,7 @@
         let id_usuario =  JSON.parse(localStorage.getItem('id_usuario'));
         console.log(id_usuario);
 
-        let url = `${location.origin}/schedule/${id_usuario}`;
+        let url = '/schedule/';
         console.log(url)
 
         const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -64,7 +64,7 @@
 
                 $.ajax({
                         type: "GET",
-                        url: url,
+                        url: url + id_usuario,
                         dataType: 'json',
                         success: function (data) {
                             console.log(data);
