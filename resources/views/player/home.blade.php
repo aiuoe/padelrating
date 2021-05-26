@@ -1,4 +1,30 @@
 @extends('layouts.player')
+
+@section('styles')
+
+    <style>
+        .home-btn-disponibilidad{
+            position: relative;
+            font-size: 10px;
+            top: -20px;
+        }
+
+        .fila-jugadores {
+            height: 80px;
+        }
+
+        .jugadores-foto {
+            margin-top: 13px;
+            position: relative;
+            right: 10px;
+        }
+
+    </style>
+
+    @include('partials.styles_script_1')
+
+  
+@endsection
 @section('content')
 <!-- Jugadores recomendados -->
 <div class="centrarCarousel">
@@ -58,7 +84,15 @@
     <div class="col-12 fila-jugadores">
         <div class="row">
             <div class="col-6 inline jugadores-nombre">
-                <p><a href="{{ action('Player\PlayersController@getPlayer', $nearplayer->id) }}">{{ $nearplayer->name}} {{ $nearplayer->surname}}</a></p>
+                <p>
+                    <a href="{{ action('Player\PlayersController@getPlayer', $nearplayer->id) }}">{{ $nearplayer->name}} {{ $nearplayer->surname}}</a>
+
+                    <button type="button" id="button" class="btn btn-primary home-btn-disponibilidad" data-toggle="modal" data-target="#exampleModal">
+                        Disponibilidad
+                    </button>
+                </p>
+
+               
             </div>
             <div class="col-2 inline jugadores-atributos">
                 <p>{{ round($nearplayer->distance, 1) }}km</p>
@@ -74,6 +108,26 @@
     @endforeach
 </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Disponibilidad</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div id='calendar'></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('scripts')

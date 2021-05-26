@@ -85,9 +85,11 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function show(Schedule $schedule)
+    public function show(Schedule $schedule , Request $request)
     {
-        //    
+
+        $data = $request->all();
+        logger($data);
     }
 
     /**
@@ -128,5 +130,6 @@ class ScheduleController extends Controller
         logger($data);
         logger($consulta);
     }
+    
 
 }

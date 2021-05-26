@@ -1,5 +1,17 @@
 @extends('layouts.player')
+
+
+@section('styles')
+
+
+    @include('partials.styles_script')
+   
+@endsection
+
+
 @section('content')
+
+
 <div class="row centrarCarousel">
     <div class="col-6">
         <div class="fotoPerfil" style="background-size: cover;background-image: url('{{ $player->avatar? '/avatars/'.$player->avatar : '/resources/persona.png' }}')"></div>
@@ -52,6 +64,21 @@
                 <a href="{{ action('Player\MessengerController@getConversation', $player->id) }}" class="btnCrearPerfil btnPerfilJugador">Invitar a jugar</a>
             @endif
             <button class="btnCrearPerfil btnPerfilJugador share-button">Compartir perfil</button>
+</div>
+
+<div class="calendar-disponibilidad">
+    <h5 class="perfilNombreJugador" style="margin-bottom: 10px;">
+        Disponibilidad
+    </h5>
+
+
+    <div id="spinner-hidden" class="spinner spinner-hidden" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <div class="form-group">
+            <div id='calendar'></div>
+    </div>
 </div>
 
 <!-- RESULTADOS -->

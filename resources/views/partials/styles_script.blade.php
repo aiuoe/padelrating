@@ -4,6 +4,7 @@
 <script src="/lib/locales/es.js"></script>
 
 
+
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -17,15 +18,23 @@
             slotMaxTime: "23:00:00" ,
             allDaySlot: false,
             expandRows: true,
+            eventBackgroundColor: '#1fbf1f',
+            eventBorderColor: '#1fbf1f', 
             displayEventTime: false ,
+            views: {
+                timeGrid: { weekday: 'short', month: 'numeric', day: 'numeric', omitCommas: true 
+                },
+                day: {
+                    columnHeaderFormat: 'dddd'
+                }
+            },
             slotLabelFormat: [
                 {
                     hour: '2-digit',
                     minute: '2-digit',
-                    hour12:true
+                    hour12:false
                 }
             ],
-            timeFormat: 'h:mm' ,
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
@@ -42,7 +51,7 @@
                 schedule.end = info.dateStr;
                 let posicion = (schedule.start.indexOf('T') + 1);
                 // console.log(schedule);
-                // console.log(info);
+                console.log(info.dateStr);
                 
                 $.ajaxSetup({
                     headers: {
@@ -59,7 +68,6 @@
                         dataType: 'json',
 
                         beforeSend: function() {
-                            console.log('Cargando')
                            $('#spinner-hidden').css( 'display', 'block'); 
                            $('#calendar').css( 'display', 'none'); 
                         },
@@ -68,7 +76,6 @@
                             calendar.refetchEvents();
                             $('#spinner-hidden').css( 'display', 'none');
                             $('#calendar').css( 'display', 'block');
-                            console.log('completado')
                         },
                         error: function (data) {
                             console.log(data);
@@ -96,12 +103,10 @@
                         data: id_usuario,
                         dataType: 'json',
                         beforeSend: function() {
-                            console.log('Cargando')
                            $('#spinner-hidden').css( 'display', 'block'); 
                            $('#calendar').css( 'display', 'none'); 
                         },
                         success: function (data) {
-                           
                             $('#spinner-hidden').css( 'display', 'none');
                             $('#calendar').css( 'display', 'block');
                             calendar.refetchEvents();
@@ -153,6 +158,15 @@
 
     .fc-event-title.fc-sticky {
         text-align: center;
+    }
+
+    .calendar-disponibilidad {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    a {
+        color: #212529
     }
     
 

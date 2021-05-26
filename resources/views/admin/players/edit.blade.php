@@ -1,11 +1,5 @@
 @extends('layouts.admin')
 
-@section('styles')
-
-    @include('partials.styles_script')
-    
-@endsection
-
 @section('content')
 
 <div class="card">
@@ -81,14 +75,6 @@
                     <span class="text-danger">{{ $errors->first('user') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.player.fields.user_helper') }}</span>
-            </div>
-
-            <div class="card-header">
-                {{ trans('cruds.player.calendar') }}
-            </div>
-
-            <div class="form-group">
-                <div id='calendar'></div>
             </div>
 
             <div class="form-group">
