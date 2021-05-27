@@ -45,31 +45,20 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $start = Carbon::parse($data['start']);
+        $end = Carbon::parse($data['end']);
 
-        logger($data);
-        // logger($data['user_id']);
-        // logger($data['start']);
-        // logger($data['end']);
-        $hora_completa = Carbon::parse($data['start'])->addMinutes($data['minutes_start'])->addHour();
-        logger($hora_completa);
-
-        $hora =  Carbon::parse($data['end'])->addMinutes($data['minutes_start'])
-                                            ->addMinutes($data['minutes_start'])
-                                            ->addMinutes($data['minutes_start']);
 
         $schedule_count = Schedule::where([
             ['user_id', '=', $data['user_id']],
             ['start', '=', $data['start']],
         ])->count();
 
-        logger(`Registros: {$schedule_count}`);
-
         if( $schedule_count == 0 ){
             $schedule = Schedule::create([
                 'user_id'       => $data['user_id'],
-                'start'         => $data['start'],
-                'end'           => $hora ,
-                'day'           => $data['day']
+                'start'         => $start->format('Y-m-d H:i:s'),
+                'end'           => $end ->format('Y-m-d H:i:s')
             ]);
 
             return response()->json(['success'=>'Registro Agregado']);
@@ -77,12 +66,6 @@ class ScheduleController extends Controller
             return response()->json(['error'=> 'Deberias Eliminar']);
         }
 
-       
-      
-
-        
-
-       
         
     }
 

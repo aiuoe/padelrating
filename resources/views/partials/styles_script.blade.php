@@ -11,6 +11,7 @@
         const calendarEl = document.getElementById('calendar');
 
         const calendar = new FullCalendar.Calendar(calendarEl, {
+            selectable: true,
             initialView: 'timeGridWeek',
             locale: 'es',
             slotDuration: '01:30:00',
@@ -36,17 +37,12 @@
 
             events: "{{ route('schedule.index') }}",
 
-            dateClick: (info) => {
-
+            select: function(info) {
                 const schedule = {};
                 schedule.user_id =  @json( auth()->user()->id );
-                schedule.start = info.dateStr;
-                schedule.end = info.dateStr;
-                schedule.day = info.date.getDay();
-                schedule.hour_start = info.date.getHours();
-                schedule.minutes_start = info.date.getMinutes();
-                console.log(schedule);
-                console.log(schedule.hour_start);
+                schedule.start = info.startStr;
+                schedule.end = info.endStr;
+                
                 console.log(info);
                 
                 $.ajaxSetup({
@@ -75,7 +71,6 @@
                             console.log(data);
                         }
                 });
-
             },
 
             eventClick: function(info){

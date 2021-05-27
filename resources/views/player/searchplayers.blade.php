@@ -87,7 +87,7 @@
            <div class="form-group">
             <h6 class="h6-dia text-uppercase" style="color:#1B3967; font-weight: bold;">Seleccionar Dia</h6>
              <select class="form-control" name="" id="">
-               <option selected> -- Dia semana --</option>
+               <option selected> -- Día semana --</option>
                <option value="0">Lunes</option>
                <option value="1">Martes</option>
                <option value="2">Miercoles</option>
