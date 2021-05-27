@@ -2,6 +2,30 @@
 @section('styles')
     <link rel="stylesheet" href="/css/wrunner-html-range-slider-with-2-handles/css/wrunner-default-theme.css">
     <script src="/css/wrunner-html-range-slider-with-2-handles/js/wrunner-native.js"></script>
+
+    <style>
+
+        .row.diaSemana {
+            margin-top: 50px;
+            border: 1px solid #d7d7d7;
+            padding: 20px;
+            width: 87%;
+            margin: auto;
+            margin-top: 10px;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            box-shadow: 0px 2px 3px 0 rgb(0 0 0 / 15%), 0 6px 20px 0 rgb(0 0 0 / 15%);
+        }
+        h6.h6-dia {
+            position: relative;
+            top: -10px;
+            right: 25px;
+        }
+
+    </style>
+
+
 @endsection
 @section('content')
 <div class="centrarCarousel">
@@ -55,6 +79,46 @@
              <input type="checkbox" id="filtrootro" name="filtrootro" value="Otro">
              <label for="filtrootro">Otro</label>
             </div> 
+        </div>
+    </div>
+
+    <div class="row diaSemana">
+        <div id="diaSemana" class="col-12 divFiltros">
+           <div class="form-group">
+            <h6 class="h6-dia text-uppercase" style="color:#1B3967; font-weight: bold;">Seleccionar Dia</h6>
+             <select class="form-control" name="" id="">
+               <option selected> -- Dia semana --</option>
+               <option value="0">Lunes</option>
+               <option value="1">Martes</option>
+               <option value="2">Miercoles</option>
+               <option value="3">Jueves</option>
+               <option value="4">Viernes</option>
+               <option value="5">Sabado</option>
+               <option value="6">Domingo</option>
+             </select>
+           </div>
+        </div>
+    </div>
+
+    <div class="row diaSemana">
+        <div id="diaSemana" class="col-12 divFiltros">
+           <div class="form-group">
+            <h6 class="h6-dia text-uppercase" style="color:#1B3967; font-weight: bold;">Seleccionar Hora</h6>
+             <select class="form-control" name="" id="">
+               <option selected> -- Hora --</option>
+               <option value="">7:00</option>
+               <option value="">8:30</option>
+               <option value="">10:00</option>
+               <option value="">11:30</option>
+               <option value="">13:00</option>
+               <option value="">14:30</option>
+               <option value="">16:00</option>
+               <option value="">17:30</option>
+               <option value="">19:00</option>
+               <option value="">20:30</option>
+               <option value="">22:00</option>
+             </select>
+           </div>
         </div>
     </div>
 
