@@ -28,9 +28,6 @@
         let id_usuario =  JSON.parse(localStorage.getItem('id_usuario'));
         console.log(id_usuario);
 
-        let url = '/schedule/';
-        console.log(url)
-
         const calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'timeGridWeek',
             locale: 'es',
@@ -54,27 +51,9 @@
                 center: 'title',
                 right: 'timeGridWeek,timeGridDay'
             },
-            events: function(start, end, timeZoneStr, callback) {
-
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                $.ajax({
-                        type: "GET",
-                        url: url + id_usuario,
-                        dataType: 'json',
-                        success: function (data) {
-                            console.log(data);
-                        },
-                        error: function (data) {
-                            console.log(data);
-                        }
-                });
-                
-                
+            events: {
+                url: "{{ route('schedule.index') }}",
+                method: 'GET'
             }
         });
 

@@ -9,16 +9,6 @@
             top: -20px;
         }
 
-        /* .fila-jugadores {
-            height: 80px;
-        }
-
-        .jugadores-foto {
-            margin-top: 13px;
-            position: relative;
-            right: 10px;
-        } */
-
     </style>
 
     @include('partials.styles_script_1')
@@ -86,10 +76,6 @@
             <div class="col-6 inline jugadores-nombre">
                 <p>
                     <a href="{{ action('Player\PlayersController@getPlayer', $nearplayer->id) }}">{{ $nearplayer->name}} {{ $nearplayer->surname}}</a>
-
-                    {{-- <button type="button" id="button" class="btn btn-primary home-btn-disponibilidad" data-toggle="modal" data-target="#exampleModal">
-                        Disponibilidad
-                    </button> --}}
                 </p>
 
                
@@ -110,7 +96,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_jugadores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

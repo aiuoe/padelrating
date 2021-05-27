@@ -3,7 +3,6 @@
 
 @section('styles')
 
-
     @include('partials.styles_script')
    
 @endsection

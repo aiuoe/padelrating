@@ -15,10 +15,11 @@ class ScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Schedule $schedule)
+    public function index(Request $request,Schedule $schedule)
     {
-
         
+        $id = $request->all();
+        logger($id);
 
         $schedule = Schedule::where('user_id', '=', Auth::user()->id )->get();
 
@@ -46,10 +47,15 @@ class ScheduleController extends Controller
         $data = $request->all();
 
         logger($data);
-        logger($data['user_id']);
-        logger($data['start']);
-        logger($data['end']);
+        // logger($data['user_id']);
+        // logger($data['start']);
+        // logger($data['end']);
+        $hora_completa = Carbon::parse($data['start'])->addMinutes($data['minutes_start'])->addHour();
+        logger($hora_completa);
 
+        $hora =  Carbon::parse($data['end'])->addMinutes($data['minutes_start'])
+                                            ->addMinutes($data['minutes_start'])
+                                            ->addMinutes($data['minutes_start']);
 
         $schedule_count = Schedule::where([
             ['user_id', '=', $data['user_id']],
@@ -60,9 +66,10 @@ class ScheduleController extends Controller
 
         if( $schedule_count == 0 ){
             $schedule = Schedule::create([
-                'user_id' => $data['user_id'],
-                'start' => $data['start'],
-                'end' => $data['end']
+                'user_id'       => $data['user_id'],
+                'start'         => $data['start'],
+                'end'           => $hora ,
+                'day'           => $data['day']
             ]);
 
             return response()->json(['success'=>'Registro Agregado']);

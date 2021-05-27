@@ -19,8 +19,11 @@ class CreateSchedulesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title')->default('Libre'); 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedSmallInteger('day');
             $table->dateTime('start');
             $table->dateTime('end');
+            $table->time('hours_start')->nullable();
+            $table->time('hours_end')->nullable();
         });
     }
 

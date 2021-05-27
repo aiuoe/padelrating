@@ -42,9 +42,12 @@
                 schedule.user_id =  @json( auth()->user()->id );
                 schedule.start = info.dateStr;
                 schedule.end = info.dateStr;
-                let posicion = (schedule.start.indexOf('T') + 1);
-                // console.log(schedule);
-                console.log(info.dateStr);
+                schedule.day = info.date.getDay();
+                schedule.hour_start = info.date.getHours();
+                schedule.minutes_start = info.date.getMinutes();
+                console.log(schedule);
+                console.log(schedule.hour_start);
+                console.log(info);
                 
                 $.ajaxSetup({
                     headers: {
@@ -52,8 +55,6 @@
                     }
                 });
                 
-               
-
                 $.ajax({
                         type: "POST",
                         url: "{{ route('schedule.store') }}",
