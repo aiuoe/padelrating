@@ -17,10 +17,11 @@ class ScheduleController extends Controller
      */
     public function index(Request $request, Schedule $schedule)
     {
+
     	if ($request->input('id'))
-	    	return Schedule::where('user_id', $request->input('id'))->get();
+	    	return Schedule::where('player_id', $request->input('id'))->get();
 	    else
-	    	return Schedule::where('user_id', auth()->user()->id)->get();
+	    	return Schedule::where('player_id', Player::where('user_id', auth()->user()->id)->first()->id)->get();
     }
 
     /**

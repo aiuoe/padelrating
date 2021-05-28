@@ -116,4 +116,9 @@ class Player extends Model
 
         return $unreadCount;
     }
+
+    public function schedule()
+    {
+        return $this->belongsTo(Schedule::class);
+    }
 }
