@@ -12,9 +12,7 @@ class Schedule extends Model
       'start',	
       'end'	
   ];
-
-  public $timestamps = false;
-
+  
   public $timestamps = false;
 
   public function players()
