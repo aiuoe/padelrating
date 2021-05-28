@@ -16,9 +16,9 @@ class CreateSchedulesTable extends Migration
 
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
+            $table->integer('player_id')->unsigned();
             $table->string('title')->default('Libre'); 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('player_id')->references('id')->on('players');
             $table->dateTime('start');
             $table->dateTime('end');
         });

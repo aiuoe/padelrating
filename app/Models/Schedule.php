@@ -6,15 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
-    protected $fillable = [
-        'id',
-        'user_id',	
-        'start',	
-        'end'	
-    ];
+  protected $fillable = [
+      'id',
+      'player_id',	
+      'start',	
+      'end'	
+  ];
 
-    public $timestamps = false;
+  public $timestamps = false;
 
-
+  public function players()
+  {
+  	return $this->hasMany(Player::class);
+  }
     
 }
