@@ -1,31 +1,11 @@
 @extends('layouts.player')
 @section('styles')
     <link rel="stylesheet" href="/css/wrunner-html-range-slider-with-2-handles/css/wrunner-default-theme.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css'>
     <script src="/css/wrunner-html-range-slider-with-2-handles/js/wrunner-native.js"></script>
-
-    <style>
-
-        .row.diaSemana {
-            margin-top: 50px;
-            border: 1px solid #d7d7d7;
-            padding: 20px;
-            width: 87%;
-            margin: auto;
-            margin-top: 10px;
-            border-radius: 10px;
-            background-color: #f2f2f2;
-            border-radius: 10px;
-            box-shadow: 0px 2px 3px 0 rgb(0 0 0 / 15%), 0 6px 20px 0 rgb(0 0 0 / 15%);
-        }
-        h6.h6-dia {
-            position: relative;
-            top: -10px;
-            right: 25px;
-        }
-
-    </style>
-
-
+    <script src='https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/messages/messages.es-es.js'></script>
+    <script  src="/js/datapicker.js"></script>
 @endsection
 @section('content')
 <div class="centrarCarousel">
@@ -82,13 +62,27 @@
         </div>
     </div>
 
-
+    <div class="row diaFechas">
+        <div class="col-12 divFiltros">
+           <div class="form-group">
+            <h6 class="h6-dia" style="color:#1B3967; font-weight: bold;">Seleccionar rango de fechas</h6>
+            <div class="datapiker-class">
+                <label for="datepicker">Fecha de inicio</label>
+                <input id="datepicker" width="276" />
+            </div>
+            <div class="datapiker-class">
+                <label for="datepicker_1">Fecha de fin</label>
+                <input id="datepicker_1" width="276"  />
+            </div>
+           </div>
+        </div>
+    </div>
 
     <div class="row diaSemana">
-        <div id="diaSemana" class="col-12 divFiltros">
+        <div class="col-12 divFiltros">
            <div class="form-group">
-            <h6 class="h6-dia text-uppercase" style="color:#1B3967; font-weight: bold;">Seleccionar Dia</h6>
-             <select class="form-control" name="" id="">
+            <h6 class="h6-dia " style="color:#1B3967; font-weight: bold;">Seleccionar Día</h6>
+             <select class="form-control" name="diaSemana">
                <option selected> -- Día semana --</option>
                <option value="0">Lunes</option>
                <option value="1">Martes</option>
@@ -102,23 +96,23 @@
         </div>
     </div>
 
-    <div class="row diaSemana">
-        <div id="diaSemana" class="col-12 divFiltros">
+    <div class="row horaSemana">
+        <div class="col-12 divFiltros">
            <div class="form-group">
-            <h6 class="h6-dia text-uppercase" style="color:#1B3967; font-weight: bold;">Seleccionar Hora</h6>
+            <h6 class="h6-dia" style="color:#1B3967; font-weight: bold;">Seleccionar Hora</h6>
              <select class="form-control" name="" id="">
                <option selected> -- Hora --</option>
-               <option value="">07:00 - 08:30</option>
-               <option value="">08:30 - 10:00</option>
-               <option value="">10:00 - 11:30</option>
-               <option value="">11:30 - 13:00</option>
-               <option value="">13:00 - 14:30</option>
-               <option value="">14:30 - 16:00</option>
-               <option value="">16:00 - 17:30</option>
-               <option value="">17:30 - 19:00</option>
-               <option value="">19:00 - 20:30</option>
-               <option value="">20:30 - 22:00</option>
-               <option value="">22:00 - 23:30</option>
+               <option value="07:00-08:30">07:00 - 08:30</option>
+               <option value="08:30-10:00">08:30 - 10:00</option>
+               <option value="10:00-11:30">10:00 - 11:30</option>
+               <option value="11:30-13:00">11:30 - 13:00</option>
+               <option value="13:00-14:30">13:00 - 14:30</option>
+               <option value="14:30-16:00">14:30 - 16:00</option>
+               <option value="16:00-17:30">16:00 - 17:30</option>
+               <option value="17:30-19:00">17:30 - 19:00</option>
+               <option value="19:00-20:30">19:00 - 20:30</option>
+               <option value="20:30-22:00">20:30 - 22:00</option>
+               <option value="22:00-23:30">22:00 - 23:30</option>
              </select>
            </div>
         </div>
