@@ -15,6 +15,8 @@ class Schedule extends Model
 
   public $timestamps = false;
 
+  public $timestamps = false;
+
   public function players()
   {
   	return $this->hasMany(Player::class);
