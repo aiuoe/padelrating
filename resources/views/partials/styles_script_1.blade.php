@@ -35,7 +35,12 @@
                 right: 'timeGridWeek,timeGridDay'
             },
 
-            events: "{{ route('schedule.index') }}",
+            events: {
+                url: "{{ route('schedule.index') }}",
+                extraParams: {
+                    id: location.pathname.split('/')[3]
+                }
+            },
 
           
             

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Schedule;
+use App\Models\Player;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -15,15 +16,15 @@ class ScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,Schedule $schedule)
+    public function index(Request $request)
     {
-        
-        $id = $request->all();
-        logger($id);
-
-        $schedule = Schedule::where('user_id', '=', Auth::user()->id )->get();
-
-        return response()->json($schedule);
+        if ($request->input('id'))
+            return Schedule::where('player_id', $request->input('id'))->get();
+        else
+        {
+            $auth_id = Player::where('user_id', auth()->user()->id)->first()->id;
+            return Schedule::where('player_id', $auth_id)->get();
+        }
     }
 
     /**
@@ -48,15 +49,17 @@ class ScheduleController extends Controller
         $start = Carbon::parse($data['start']);
         $end = Carbon::parse($data['end']);
 
+        $player_id = Player::where('user_id', auth()->user()->id)->first()->id;
 
-        $schedule_count = Schedule::where([
-            ['user_id', '=', $data['user_id']],
+        $count = Schedule::where([
+            ['player_id', '=', $player_id],
             ['start', '=', $data['start']],
         ])->count();
 
-        if( $schedule_count == 0 ){
+        if( $count == 0 )
+        {
             $schedule = Schedule::create([
-                'user_id'       => $data['user_id'],
+                'player_id'       => $player_id,
                 'start'         => $start->format('Y-m-d H:i:s'),
                 'end'           => $end ->format('Y-m-d H:i:s')
             ]);
@@ -64,9 +67,7 @@ class ScheduleController extends Controller
             return response()->json(['success'=>'Registro Agregado']);
         }else{
             return response()->json(['error'=> 'Deberias Eliminar']);
-        }
-
-        
+        } 
     }
 
     /**
@@ -79,7 +80,6 @@ class ScheduleController extends Controller
     {
 
         $data = $request->all();
-        logger($data);
     }
 
     /**
@@ -117,8 +117,6 @@ class ScheduleController extends Controller
         $consulta = Schedule::find($data['id']);
         $consulta->delete();
         return response()->json(['success'=>'Registro Eliminado']);
-        logger($data);
-        logger($consulta);
     }
     
 

@@ -8,7 +8,7 @@ class Schedule extends Model
 {
     protected $fillable = [
         'id',
-        'user_id',	
+        'player_id',	
         'start',	
         'end'	
     ];
