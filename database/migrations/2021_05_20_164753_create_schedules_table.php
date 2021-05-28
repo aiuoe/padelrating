@@ -18,7 +18,7 @@ class CreateSchedulesTable extends Migration
             $table->id();
             $table->integer('user_id')->unsigned();
             $table->string('title')->default('Libre'); 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('players');
             $table->dateTime('start');
             $table->dateTime('end');
         });

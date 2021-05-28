@@ -82,7 +82,7 @@
         <div class="col-12 divFiltros">
            <div class="form-group">
             <h6 class="h6-dia" style="color:#1B3967; font-weight: bold;">Seleccionar Hora</h6>
-             <select class="form-control" name="hora">
+             <select id="hora_select" class="form-control" name="hora_select">
                <option selected> -- Hora --</option>
                <option value="07:00-08:30">07:00 - 08:30</option>
                <option value="08:30-10:00">08:30 - 10:00</option>
@@ -122,8 +122,9 @@
       <input type="hidden" name="maxpr" id="maxpr">
       <input type="hidden" name="filtrosexo" id="filtrosexo">
       <input type="hidden" name="orden" id="orden">
-      <input type="text" name="datapicker_start" id="datapicker_start">
-      <input type="text" name="datapicker_end" id="datapicker_start">
+      <input type="hidden" name="datapicker_start" id="datapicker_start">
+      <input type="hidden" name="datapicker_end" id="datapicker_end">
+      <input type="hidden" name="hora_filter" id="hora_filter">
     </form>
     
     <div class="row col-12 col-jugadores">
@@ -185,13 +186,17 @@
             document.getElementById("maxpr").value = pr.maxValue;
         }
 
+        // ##################################
+
         let valor = $('#datepicker').val()
         let valor_1 = $('#datepicker_1').val()
-
-        
+        let hora_filter = $('#hora_select').val();
+        $('#datapicker_start').val(valor);
+        $('#datapicker_end').val(valor_1);
+        $('#hora_filter').val(hora_filter);
 
             
-        // document.getElementById("busqueda").submit();
+        document.getElementById("busqueda").submit();
     });
     function desplegarDistancia() {
         var x = document.getElementById("bDistancia");
