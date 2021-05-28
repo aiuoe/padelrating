@@ -39,12 +39,10 @@
 
             select: function(info) {
                 const schedule = {};
-                schedule.user_id =  @json( auth()->user()->id );
+                schedule.player_id =  @json( auth()->user()->id );
                 schedule.start = info.startStr;
                 schedule.end = info.endStr;
-                
-                console.log(info);
-                
+                                
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
