@@ -15,15 +15,12 @@ class ScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,Schedule $schedule)
+    public function index(Request $request, Schedule $schedule)
     {
-        
-        $id = $request->all();
-        logger($id);
-
-        $schedule = Schedule::where('user_id', '=', Auth::user()->id )->get();
-
-        return response()->json($schedule);
+    	if ($request->input('id'))
+	    	return Schedule::where('user_id', $request->input('id'))->get();
+	    else
+	    	return Schedule::where('user_id', auth()->user()->id)->get();
     }
 
     /**
