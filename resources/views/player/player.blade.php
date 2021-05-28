@@ -3,8 +3,12 @@
 
 @section('styles')
 
-    @include('partials.styles_script')
-   
+    @if (Request::is('player/myplayer'))
+        @include('partials.styles_script')
+    @else
+        @include('partials.styles_script_1')
+    @endif
+     
 @endsection
 
 

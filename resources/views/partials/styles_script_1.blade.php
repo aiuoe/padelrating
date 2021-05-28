@@ -7,28 +7,11 @@
 
 <script>
 
-
     document.addEventListener('DOMContentLoaded', function() {
         const calendarEl = document.getElementById('calendar');
 
-        $('.home-btn-disponibilidad').on('click', function () {
-                setTimeout(() => {
-                    $('.fc-timeGridWeek-button').click()
-                }, 500);
-               
-        });
-
-        $('.home-btn-disponibilidad').on('click' , function(){
-            let url = $(this).parent().children().first().attr('href');
-            let id = url.substring(url.lastIndexOf('/') + 1);
-            localStorage.setItem('id_usuario', JSON.stringify(id))
-        })
-
-
-        let id_usuario =  JSON.parse(localStorage.getItem('id_usuario'));
-        console.log(id_usuario);
-
         const calendar = new FullCalendar.Calendar(calendarEl, {
+            selectable: true,
             initialView: 'timeGridWeek',
             locale: 'es',
             slotDuration: '01:30:00',
@@ -43,7 +26,7 @@
                 {
                     hour: '2-digit',
                     minute: '2-digit',
-                    hour12:true
+                    hour12:false
                 }
             ],
             headerToolbar: {
@@ -51,21 +34,17 @@
                 center: 'title',
                 right: 'timeGridWeek,timeGridDay'
             },
-            events: {
-                url: "{{ route('schedule.index') }}",
-                method: 'GET'
-            }
+
+            events: "{{ route('schedule.index') }}",
+
+          
+            
         });
 
         calendar.setOption('locale' , 'Es');
 
         calendar.render();
-
-        
     });
-
-
-    
 
 </script>
 
