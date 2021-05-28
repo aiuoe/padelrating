@@ -68,30 +68,12 @@
             <h6 class="h6-dia" style="color:#1B3967; font-weight: bold;">Seleccionar rango de fechas</h6>
             <div class="datapiker-class">
                 <label for="datepicker">Fecha de inicio</label>
-                <input id="datepicker" width="276" />
+                <input id="datepicker" width="276" name="fechaInicio" />
             </div>
             <div class="datapiker-class">
                 <label for="datepicker_1">Fecha de fin</label>
-                <input id="datepicker_1" width="276"  />
+                <input id="datepicker_1" width="276" name="fechaFin"  />
             </div>
-           </div>
-        </div>
-    </div>
-
-    <div class="row diaSemana">
-        <div class="col-12 divFiltros">
-           <div class="form-group">
-            <h6 class="h6-dia " style="color:#1B3967; font-weight: bold;">Seleccionar Día</h6>
-             <select class="form-control" name="diaSemana">
-               <option selected> -- Día semana --</option>
-               <option value="0">Lunes</option>
-               <option value="1">Martes</option>
-               <option value="2">Miercoles</option>
-               <option value="3">Jueves</option>
-               <option value="4">Viernes</option>
-               <option value="5">Sabado</option>
-               <option value="6">Domingo</option>
-             </select>
            </div>
         </div>
     </div>
@@ -100,7 +82,7 @@
         <div class="col-12 divFiltros">
            <div class="form-group">
             <h6 class="h6-dia" style="color:#1B3967; font-weight: bold;">Seleccionar Hora</h6>
-             <select class="form-control" name="" id="">
+             <select class="form-control" name="hora">
                <option selected> -- Hora --</option>
                <option value="07:00-08:30">07:00 - 08:30</option>
                <option value="08:30-10:00">08:30 - 10:00</option>
@@ -140,6 +122,8 @@
       <input type="hidden" name="maxpr" id="maxpr">
       <input type="hidden" name="filtrosexo" id="filtrosexo">
       <input type="hidden" name="orden" id="orden">
+      <input type="text" name="datapicker_start" id="datapicker_start">
+      <input type="text" name="datapicker_end" id="datapicker_start">
     </form>
     
     <div class="row col-12 col-jugadores">
@@ -200,8 +184,14 @@
             document.getElementById("minpr").value = pr.minValue;
             document.getElementById("maxpr").value = pr.maxValue;
         }
+
+        let valor = $('#datepicker').val()
+        let valor_1 = $('#datepicker_1').val()
+
+        
+
             
-        document.getElementById("busqueda").submit();
+        // document.getElementById("busqueda").submit();
     });
     function desplegarDistancia() {
         var x = document.getElementById("bDistancia");
