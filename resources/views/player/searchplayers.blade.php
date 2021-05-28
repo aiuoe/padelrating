@@ -82,6 +82,8 @@
         </div>
     </div>
 
+
+
     <div class="row diaSemana">
         <div id="diaSemana" class="col-12 divFiltros">
            <div class="form-group">
@@ -106,17 +108,17 @@
             <h6 class="h6-dia text-uppercase" style="color:#1B3967; font-weight: bold;">Seleccionar Hora</h6>
              <select class="form-control" name="" id="">
                <option selected> -- Hora --</option>
-               <option value="">7:00</option>
-               <option value="">8:30</option>
-               <option value="">10:00</option>
-               <option value="">11:30</option>
-               <option value="">13:00</option>
-               <option value="">14:30</option>
-               <option value="">16:00</option>
-               <option value="">17:30</option>
-               <option value="">19:00</option>
-               <option value="">20:30</option>
-               <option value="">22:00</option>
+               <option value="">07:00 - 08:30</option>
+               <option value="">08:30 - 10:00</option>
+               <option value="">10:00 - 11:30</option>
+               <option value="">11:30 - 13:00</option>
+               <option value="">13:00 - 14:30</option>
+               <option value="">14:30 - 16:00</option>
+               <option value="">16:00 - 17:30</option>
+               <option value="">17:30 - 19:00</option>
+               <option value="">19:00 - 20:30</option>
+               <option value="">20:30 - 22:00</option>
+               <option value="">22:00 - 23:30</option>
              </select>
            </div>
         </div>

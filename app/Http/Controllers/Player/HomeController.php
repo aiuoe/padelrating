@@ -95,6 +95,7 @@ class HomeController extends Controller
 
     public function postSearchPlayers(Request $request)
     {
+        $data = Request()->all();
         $mindistance = $request->input('mindistance', null);
         $maxdistance = $request->input('maxdistance', null);
         $minpr = $request->input('minpr', null);
