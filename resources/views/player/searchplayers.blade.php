@@ -65,7 +65,7 @@
     <div class="row diaFechas">
         <div class="col-12 divFiltros">
            <div class="form-group">
-            <h6 class="h6-dia" style="color:#1B3967; font-weight: bold;">Seleccionar rango de fechas</h6>
+            <h6 class="h6-dia" style="color:#1B3967; font-weight: bold;">¿Que día quieres jugar?</h6>
             <div class="datapiker-class">
                 <label for="datepicker">Fecha de inicio</label>
                 <input id="datepicker" width="276" name="fechaInicio" />
@@ -81,7 +81,7 @@
     <div class="row horaSemana">
         <div class="col-12 divFiltros">
            <div class="form-group">
-            <h6 class="h6-dia" style="color:#1B3967; font-weight: bold;">Seleccionar Hora</h6>
+            <h6 class="h6-dia" style="color:#1B3967; font-weight: bold;">¿A que hora quieres jugar?</h6>
              <select id="hora_select" class="form-control" name="hora_select">
                <option selected> -- Hora --</option>
                <option value="07:00-08:30">07:00 - 08:30</option>
