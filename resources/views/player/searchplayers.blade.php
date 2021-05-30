@@ -119,8 +119,11 @@
       <input type="hidden" name="maxpr" id="maxpr">
       <input type="hidden" name="filtrosexo" id="filtrosexo">
       <input type="hidden" name="orden" id="orden">
-      <input type="text" name="datapicker_start" id="datapicker_start">
-      <input type="text" name="datapicker_end" id="datapicker_start">
+
+      
+      <input type="hidden" name="datapicker_start" id="datapicker_start">
+      <input type="hidden" name="datapicker_end" id="datapicker_end">
+      <input type="hidden" name="hora_filter" id="hora_filter">
     </form>
     
     <div class="row col-12 col-jugadores">
@@ -159,7 +162,6 @@
         e.preventDefault()
 
         let data = $(this).serializeArray()
-
         data.push({name: 'distanceMin', value: $('.wrunner__valueNote')[0].textContent})
         data.push({name: 'distanceMax', value: $('.wrunner__valueNote')[1].textContent})
         data.push({name: 'prMin', value: $('.wrunner__valueNote')[2].textContent})

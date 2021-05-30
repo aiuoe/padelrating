@@ -97,7 +97,6 @@ class HomeController extends Controller
     {
         $me = Player::where('user_id', auth()->user()->id)->first();
         $players = [];
-
         $dist_min = ($request->input('distanceMin') == 0)? 1 : $request->input('distanceMin');
         $dist_max = $request->input('distanceMax');
         $pr_min = $request->input('prMin');
