@@ -95,51 +95,63 @@ class HomeController extends Controller
 
     public function postSearchPlayers(Request $request)
     {
-        $data = Request()->all();
-        $mindistance = $request->input('mindistance', null);
-        $maxdistance = $request->input('maxdistance', null);
-        $minpr = $request->input('minpr', null);
-        $maxpr = $request->input('maxpr', null);
-        $genre = $request->input('genre', null);
-        $playernamesearched = $request->input('playername');
+        $me = Player::where('user_id', auth()->user()->id)->first();
+        $players = [];
 
-        $user = \Auth::user();
-        $player = $user->userPlayers()->first();
-        //$player = Player::select('name')->distance(41, 0)->having('distance','<>', 'null')->limit(2)->get();
-        //dd($player);
-        $order = $request->input('order', null);
+        $dist_min = ($request->input('distanceMin') == 0)? 1 : $request->input('distanceMin');
+        $dist_max = $request->input('distanceMax');
+        $pr_min = $request->input('prMin');
+        $pr_max = $request->input('prMax');
+        $hours = null;
 
-        $players = Player::whereRaw("1=1");
+        if ($request->hora != null)
+            $hours = explode('-', $request->hora);
 
-        if ($playernamesearched)
-        {
-            $playernameparts = explode(' ', $playernamesearched);
+        $players = Player::distance($me->latitude, $me->longitude)
+        ->get()
+        ->whereBetween('distance', [$dist_min, $dist_max])
+        ->whereBetween('pr', [$pr_min, $pr_max]);
 
-            foreach ($playernameparts as $playernamepart) {
-                if ($playernamepart!="")
-                {
-                    $players->where(DB::raw('LOWER(CONCAT(name, " ", surname))'), 'LIKE', '%'.strtolower($playernamepart).'%'); 
-                }                                   
-            }
-        }
-        if ( $minpr!=null && $maxpr!=null)
+        if ($request->has('filtrohombre'))
+            $players = $players->where('genre', 'male');
+
+        if ($request->has('filtromujer'))
+            $players = $players->where('genre', 'female');
+
+        if ($request->has('filtrootro'))
+            $players = $players->where('genre', 'other');
+
+        if ($request->fechaInicio != null)
         {
-            $players->where('pr', '>', $minpr)->where('pr', '<', $maxpr);
+            $players = $players->filter(function($item, $key) use ($request)
+            { 
+                return count($item->schedules()->where('start', '<', $request->fechaInicio)->get()); 
+            });
         }
-        if ($player->latitude)
+
+        if ($request->fechaEnd != null)
         {
-            $players->distance($player->latitude, $player->longitude);
-            if ( $mindistance!=null && $maxdistance!=null)
-            {
-                $players->having('distance','>', $mindistance)->having('distance','<', $maxdistance);
-            }
+            $players = $players->filter(function($item, $key) use ($request)
+            { 
+                return count($item->schedules()->where('end', '<', $request->fechaEnd)->get()); 
+            });   
         }
-        if ($order)
+
+        if ($hours != null)
         {
-            $players->orderBy('distance', 'ASC');
+            $players = $players->filter(function($item, $key) use ($hours)
+            { 
+                return count($item->schedules()->whereTime('start', '<', $hours[0])->get()); 
+            });
+
+            $players = $players->filter(function($item, $key) use ($hours)
+            { 
+                return count($item->schedules()->whereTime('end', '<', $hours[1])->get()); 
+            });
         }
-        $players = $players->get();
-        return view('player.searchplayers', compact('players', 'playernamesearched', 'mindistance', 'maxdistance', 'minpr', 'maxpr','genre', 'order'));
+
+
+        return $players->where('user_id', '!=', auth()->user()->id)->flatten();
     }
 
     public function postFirstQuestionary(Request $request)

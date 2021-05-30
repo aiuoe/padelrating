@@ -14,7 +14,9 @@ class Player extends Model
     use Geographical;
 
     protected static $kilometers = true;
+
     public $table = 'players';
+    
     private $questions;
 
     const GENRE_SELECT = [
@@ -117,8 +119,8 @@ class Player extends Model
         return $unreadCount;
     }
 
-    public function schedule()
+    public function schedules()
     {
-        return $this->belongsTo(Schedule::class);
+        return $this->hasMany(Schedule::class);
     }
 }

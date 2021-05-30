@@ -212,6 +212,7 @@ class PlayersController extends Controller
 
         return view('player.profile', compact('player'));
     }
+    
     public function postMyProfile(Request $request)
     {
         $user = \Auth::user();
