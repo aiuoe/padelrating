@@ -134,7 +134,7 @@
         @endif
 
 <div class="col-12 filaBusquedaJugadores">
-    <table class="table col-8" style="margin-top: 4px;">
+    <table class="table col-8" style="margin-top: 4px; display: none;" id="tablePlayersFiltered">
         <thead>
              <tr>
                 <th scope="col">Nombre</th>
@@ -162,31 +162,81 @@
         e.preventDefault()
 
         let data = $(this).serializeArray()
-        data.push({name: 'distanceMin', value: $('.wrunner__valueNote')[0].textContent})
-        data.push({name: 'distanceMax', value: $('.wrunner__valueNote')[1].textContent})
-        data.push({name: 'prMin', value: $('.wrunner__valueNote')[2].textContent})
-        data.push({name: 'prMax', value: $('.wrunner__valueNote')[3].textContent})
-                
-        $.ajax({
-            url: `${location.origin}/player/searchplayers`,
-            data: data,
-            type: "POST"
-        })
-        .done((data) => {
-            $('#filterPlayers').empty()
-            data.map(i => 
-            {
-                $('#filterPlayers').append(`<tr>
-                    <td>${i.name}<td>
-                    <td>${i.surname}<td>
-                    <td>${i.genre}<td>
-                    <td>${i.distance} KM<td>
-                    <td>${i.pr}<td>
-                </tr>`)
-            })
-        })
-        .fail((error) => console.log(error))
 
+        if (data[1]['value'] == '' && data[2]['value'] == '')
+        {
+            data.push({name: 'distanceMin', value: $('.wrunner__valueNote')[0].textContent})
+            data.push({name: 'distanceMax', value: $('.wrunner__valueNote')[1].textContent})
+            data.push({name: 'prMin', value: $('.wrunner__valueNote')[2].textContent})
+            data.push({name: 'prMax', value: $('.wrunner__valueNote')[3].textContent})
+            $.ajax({
+                url: `${location.origin}/player/searchplayers`,
+                data: data,
+                type: "POST"
+            })
+            .done((data) => {
+                if (data.length)
+                {
+                    $('#tablePlayersFiltered').show()
+                    $('#filterPlayers').empty()
+                    data.map(i => {
+                        $('#filterPlayers').append(`<tr>
+                            <td>${i.name}<td>
+                            <td>${i.surname}<td>
+                            <td>${i.genre}<td>
+                            <td>${i.distance} KM<td>
+                            <td>${i.pr}<td>
+                        </tr>`)
+                    })
+                }
+                else
+                {
+                    $('#tablePlayersFiltered').hide()
+                    $('#filterPlayers').empty()
+                }
+            })
+            .fail((error) => console.log(error))
+
+        }
+        else
+        {
+            if (data[1]['value'] < data[2]['value'])
+            {
+                data.push({name: 'distanceMin', value: $('.wrunner__valueNote')[0].textContent})
+                data.push({name: 'distanceMax', value: $('.wrunner__valueNote')[1].textContent})
+                data.push({name: 'prMin', value: $('.wrunner__valueNote')[2].textContent})
+                data.push({name: 'prMax', value: $('.wrunner__valueNote')[3].textContent})
+                $.ajax({
+                    url: `${location.origin}/player/searchplayers`,
+                    data: data,
+                    type: "POST"
+                })
+                .done((data) => {
+                    if (data.length)
+                    {
+                        $('#tablePlayersFiltered').show()
+                        $('#filterPlayers').empty()
+                        data.map(i => {
+                            $('#filterPlayers').append(`<tr>
+                                <td>${i.name}<td>
+                                <td>${i.surname}<td>
+                                <td>${i.genre}<td>
+                                <td>${i.distance} KM<td>
+                                <td>${i.pr}<td>
+                            </tr>`)
+                        })
+                    }
+                    else
+                    {
+                        $('#tablePlayersFiltered').show()
+                        $('#filterPlayers').empty()
+                    }
+                })
+                .fail((error) => console.log(error))
+            }
+            else
+                alert('La fecha de fin no puede ser menor a la fecha de inicio')
+        }
     })
 
     function desplegarDistancia() {
