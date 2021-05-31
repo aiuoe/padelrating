@@ -112,6 +112,7 @@ Route::group(['prefix' => 'player', 'as' => 'player.', 'namespace' => 'Player', 
     
     Route::get('searchplayers', 'HomeController@getSearchPlayers')->name('getsearchplayers');
     Route::post('searchplayers', 'HomeController@postSearchPlayers')->name('searchplayers');
+    Route::post('search', 'HomeController@search')->name('search');
 
     // Clubs
     Route::delete('clubs/destroy', 'ClubsController@massDestroy')->name('clubs.massDestroy');
