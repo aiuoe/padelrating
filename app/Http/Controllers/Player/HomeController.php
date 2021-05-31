@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Score;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class HomeController extends Controller
@@ -100,11 +101,7 @@ class HomeController extends Controller
         logger('estoy aquí');
         logger($me);
         $players = [];
-        $dist_min = ($request->input('distanceMin') == 0)? 1 : $request->input('distanceMin');
-        logger("distancia mínima");
-        logger($dist_min);
-
-
+        $dist_min = $request->input('distanceMin');
         $dist_max = $request->input('distanceMax');
 
         logger("distancia máxima");
@@ -119,13 +116,11 @@ class HomeController extends Controller
         }
 
         $players = Player::distance($me->latitude, $me->longitude)
-        ->get();
-        //->whereBetween('distance', [$dist_min, $dist_max])
-        //->whereBetween('pr', [$pr_min, $pr_max]);
-        logger("Player");
-        logger($players);
-        if ($request->has('filtrohombre')){
-             logger('entro filtro hombre');
+        ->get()
+        ->whereBetween('distance', [$dist_min, 10000])
+        ->whereBetween('pr', [$pr_min, $pr_max]);
+
+        if ($request->has('filtrohombre'))
             $players = $players->where('genre', 'male');
         }
 
@@ -141,19 +136,23 @@ class HomeController extends Controller
 
         if ($request->fechaInicio != null)
         {
-            logger('entro fecha inicio');
-            $players = $players->filter(function($item, $key) use ($request)
+            $start = Carbon::createFromFormat('Y-d-m', $request->fechaInicio)
+            ->startOfDay();
+
+            $players = $players->filter(function($item, $key) use ($start)
             { 
-                return count($item->schedules()->where('start', '<', $request->fechaInicio)->get()); 
+                return count($item->schedules()->where('start', '>', $start)->get()); 
             });
         }
 
         if ($request->fechaEnd != null)
         {
-            logger('entro fecha end');
-            $players = $players->filter(function($item, $key) use ($request)
+            $end = Carbon::createFromFormat('Y-d-m', $request->fechaEnd)
+            ->endOfDay();
+
+            $players = $players->filter(function($item, $key) use ($end)
             { 
-                return count($item->schedules()->where('end', '<', $request->fechaEnd)->get()); 
+                return count($item->schedules()->where('end', '<', $end)->get()); 
             });   
         }
 
@@ -161,7 +160,7 @@ class HomeController extends Controller
         {
             $players = $players->filter(function($item, $key) use ($hours)
             { 
-                return count($item->schedules()->whereTime('start', '<', $hours[0])->get()); 
+                return count($item->schedules()->whereTime('start', '>', $hours[0])->get()); 
             });
 
             $players = $players->filter(function($item, $key) use ($hours)
@@ -169,7 +168,6 @@ class HomeController extends Controller
                 return count($item->schedules()->whereTime('end', '<', $hours[1])->get()); 
             });
         }
-
 
         return $players->where('user_id', '!=', auth()->user()->id)->flatten();
     }
@@ -223,5 +221,24 @@ class HomeController extends Controller
         }
         
         return -1;
+    }
+
+    public function search(Request $request)
+    {
+        $mindistance = 0;
+        $maxdistance = 50;
+        $minpr = 1;
+        $maxpr = 14;
+        $genre = null;
+        $playernamesearched = "";
+        $me = Player::where('user_id', auth()->user()->id)->first();
+        
+        $order = null;
+
+        $players = Player::distance($me->latitud, $me->longitude)
+        ->where('name', 'LIKE', $request->input('playername'))
+        ->get();
+
+        return view('player.searchplayers', compact('players', 'playernamesearched', 'mindistance', 'maxdistance', 'minpr', 'maxpr', 'genre', 'order'));
     }
 }
