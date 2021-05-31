@@ -189,7 +189,7 @@
 					data.map(player => {
 						$('#jugadoresLista').append(`<div class="col-12 fila-jugadores">
 					    <div class="row">
-					      <div class="col-6 inline jugadores-nombre"><p><a>${player.name} ${player.surname}</a></p></div>
+					      <div class="col-6 inline jugadores-nombre"><p><a href="${location.origin + '/player/player/' + player.id}">${player.name} ${player.surname}</a></p></div>
 					      <div class="col-2 inline jugadores-atributos"><p>${Math.round(player.distance)}km</p></div>
 					      <div class="col-2 inline jugadores-atributos"><p>${Math.round(player.pr)}</p></div>
 					      <div class="col-2 inline">
@@ -230,7 +230,7 @@
 						data.map(player => {
 							$('#jugadoresLista').append(`<div class="col-12 fila-jugadores">
 						    <div class="row">
-						      <div class="col-6 inline jugadores-nombre"><p><a>${player.name} ${player.surname}</a></p></div>
+						      <div class="col-6 inline jugadores-nombre"><p><a href="${location.origin + '/player/player/' + player.id}">${player.name} ${player.surname}</a></p></div>
 						      <div class="col-2 inline jugadores-atributos"><p>${player.distance}km</p></div>
 						      <div class="col-2 inline jugadores-atributos"><p>${player.pr}</p></div>
 						      <div class="col-2 inline">
