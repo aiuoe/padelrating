@@ -95,33 +95,53 @@ class HomeController extends Controller
 
     public function postSearchPlayers(Request $request)
     {
+
         $me = Player::where('user_id', auth()->user()->id)->first();
+        logger('estoy aquí');
+        logger($me);
         $players = [];
         $dist_min = ($request->input('distanceMin') == 0)? 1 : $request->input('distanceMin');
+        logger("distancia mínima");
+        logger($dist_min);
+
+
         $dist_max = $request->input('distanceMax');
+
+        logger("distancia máxima");
+        logger($dist_max);
+        
         $pr_min = $request->input('prMin');
         $pr_max = $request->input('prMax');
         $hours = null;
 
-        if ($request->hora != null)
+        if ($request->hora != null){
             $hours = explode('-', $request->hora);
+        }
 
         $players = Player::distance($me->latitude, $me->longitude)
-        ->get()
-        ->whereBetween('distance', [$dist_min, $dist_max])
-        ->whereBetween('pr', [$pr_min, $pr_max]);
-
-        if ($request->has('filtrohombre'))
+        ->get();
+        //->whereBetween('distance', [$dist_min, $dist_max])
+        //->whereBetween('pr', [$pr_min, $pr_max]);
+        logger("Player");
+        logger($players);
+        if ($request->has('filtrohombre')){
+             logger('entro filtro hombre');
             $players = $players->where('genre', 'male');
+        }
 
-        if ($request->has('filtromujer'))
+        if ($request->has('filtromujer')){
+            logger('entro filtro mujer');
             $players = $players->where('genre', 'female');
+        }
 
-        if ($request->has('filtrootro'))
+        if ($request->has('filtrootro')){
+            logger('entro filtro otro');
             $players = $players->where('genre', 'other');
+        }
 
         if ($request->fechaInicio != null)
         {
+            logger('entro fecha inicio');
             $players = $players->filter(function($item, $key) use ($request)
             { 
                 return count($item->schedules()->where('start', '<', $request->fechaInicio)->get()); 
@@ -130,6 +150,7 @@ class HomeController extends Controller
 
         if ($request->fechaEnd != null)
         {
+            logger('entro fecha end');
             $players = $players->filter(function($item, $key) use ($request)
             { 
                 return count($item->schedules()->where('end', '<', $request->fechaEnd)->get()); 

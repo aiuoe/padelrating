@@ -125,30 +125,12 @@
       <input type="hidden" name="datapicker_end" id="datapicker_end">
       <input type="hidden" name="hora_filter" id="hora_filter">
     </form>
-    
+    <a href="#anchor"></a>
     <div class="row col-12 col-jugadores">
-        @if (count($players)==0)
-            <div class="col-12 filaBusquedaJugadores">
-                <h5>No se han encontrado resultados</h5>
+        <div class="row filaBusquedaJugadores">
+            <div class="row col-12 col-jugadores" id="filterPlayers">
             </div>
-        @endif
-
-<div class="col-12 filaBusquedaJugadores">
-    <table class="table col-8" style="margin-top: 4px; display: none;" id="tablePlayersFiltered">
-        <thead>
-             <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Sexo</th>
-                <th scope="col">Distancia</th>
-                <th scope="col">Pr</th>
-            </tr>
-        </thead>
-        <tbody id="filterPlayers">
-        </tbody>
-    </table>
-</div>
-        
+        </div>
     </div>
 
 </div>
@@ -157,6 +139,9 @@
 @section('scripts')
 @parent
 <script>
+   
+    
+
     $('#formFilter').submit(function (e)
     {
         e.preventDefault()
@@ -180,19 +165,46 @@
                     $('#tablePlayersFiltered').show()
                     $('#filterPlayers').empty()
                     data.map(i => {
-                        $('#filterPlayers').append(`<tr>
-                            <td>${i.name}<td>
-                            <td>${i.surname}<td>
-                            <td>${i.genre}<td>
-                            <td>${i.distance} KM<td>
-                            <td>${i.pr}<td>
-                        </tr>`)
+
+                        if(typeof(i.distance) != 'object'){
+                            distance = i.distance.toFixed(2);
+                        }else{
+                            distance = "ND";
+                        }
+                        console.log(typeof(i.distance));
+                        if(typeof(i.pr) != 'object'){
+                            pr = i.pr.toFixed(2);
+                        }else{
+                            pr = "ND";
+                        }
+
+
+                        $('#filterPlayers').append(`<div class="col-12 fila-jugadores">
+                                <div class="row">
+                                    <div class="col-6 inline jugadores-nombre">
+                                        <p><a href="https://app.mypadelrating.com/player/player/${i.id}">${i.name} ${i.surname} </a>
+                                        </p>
+                                    </div>
+                                    <div class="col-2 inline jugadores-atributos">
+                                        <p>${distance}</p>
+                                    </div>
+                                    <div class="col-2 inline jugadores-atributos">
+                                        <p>${pr}</p>
+                                    </div>
+                                    <div class="col-2 inline">
+                                        <div class="jugadores-foto" style="background-size: cover;background-image: url('/resources/persona.png')"></div>
+                                    </div>
+                                </div>            
+                            </div>`)
                     })
                 }
                 else
                 {
+                    //No he encontrado ningún resultado
+                    $('#filterPlayers').empty();
+                    $('#filterPlayers').append('<h6>No se han encontrado resultados</h6>');
                     $('#tablePlayersFiltered').hide()
-                    $('#filterPlayers').empty()
+                    
                 }
             })
             .fail((error) => console.log(error))
