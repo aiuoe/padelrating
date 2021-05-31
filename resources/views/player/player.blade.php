@@ -75,9 +75,11 @@
     </h5>
 
 
-    <div id="spinner-hidden" class="spinner spinner-hidden" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>
+    <div id="overlay">
+        <div class="cv-spinner">
+          <span class="spinner"></span>
+        </div>
+      </div>
 
     <div class="form-group">
             <div id='calendar'></div>

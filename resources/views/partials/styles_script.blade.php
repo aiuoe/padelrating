@@ -56,8 +56,9 @@
                         dataType: 'json',
 
                         beforeSend: function() {
-                           $('#spinner-hidden').css( 'display', 'block'); 
-                           $('#calendar').css( 'display', 'none'); 
+                        //    $('#spinner-hidden').css( 'display', 'block'); 
+                        //    $('#calendar').css( 'display', 'none'); 
+                        $("#overlay").fadeIn(300);
                         },
 
                         success: function (data) {
@@ -67,7 +68,13 @@
                         },
                         error: function (data) {
                             console.log(data);
-                        }
+                        },
+
+                        complete: function () { 
+                            setTimeout(function(){
+                                $("#overlay").fadeOut(300);
+                            },500);
+                        },
                 });
             },
 
