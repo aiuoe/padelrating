@@ -121,16 +121,16 @@ class HomeController extends Controller
         ->whereBetween('pr', [$pr_min, $pr_max]);
 
         if ($request->has('filtrohombre'))
+        {
             $players = $players->where('genre', 'male');
         }
 
-        if ($request->has('filtromujer')){
-            logger('entro filtro mujer');
+        if ($request->has('filtromujer'))
+        {
             $players = $players->where('genre', 'female');
         }
 
         if ($request->has('filtrootro')){
-            logger('entro filtro otro');
             $players = $players->where('genre', 'other');
         }
 
