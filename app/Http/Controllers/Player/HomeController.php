@@ -98,26 +98,21 @@ class HomeController extends Controller
     {
 
         $me = Player::where('user_id', auth()->user()->id)->first();
-        logger('estoy aquí');
-        logger($me);
         $players = [];
         $dist_min = $request->input('distanceMin');
-        $dist_max = $request->input('distanceMax');
-
-        logger("distancia máxima");
-        logger($dist_max);
-        
+        $dist_max = $request->input('distanceMax');       
         $pr_min = $request->input('prMin');
         $pr_max = $request->input('prMax');
         $hours = null;
 
-        if ($request->hora != null){
+        if ($request->hora != null)
+        {
             $hours = explode('-', $request->hora);
         }
 
         $players = Player::distance($me->latitude, $me->longitude)
         ->get()
-        ->whereBetween('distance', [$dist_min, 10000])
+        ->whereBetween('distance', [$dist_min, $dist_max])
         ->whereBetween('pr', [$pr_min, $pr_max]);
 
         if ($request->has('filtrohombre'))

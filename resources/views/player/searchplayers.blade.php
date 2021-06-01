@@ -167,7 +167,11 @@
 	{
 		e.preventDefault()
 
-		let data = $(this).serializeArray()
+		let data = $(this).serializeArray(),
+				rawMin = data[1]['value'].split('-'),
+				rawMax = data[2]['value'].split('-'),
+				dateMin = new Date(`${rawMin[0]}-${rawMin[2]}-${rawMin[1]} 00:00:00`),
+				dateMax = new Date(`${rawMax[0]}-${rawMax[2]}-${rawMax[1]} 23:59:59`)
 
 		if (data[1]['value'] == '' && data[2]['value'] == '')
 		{
@@ -210,7 +214,7 @@
 		}
 		else
 		{
-			if (data[1]['value'] < data[2]['value'])
+			if (dateMin < dateMax)
 			{
 				data.push({name: 'distanceMin', value: $('.wrunner__valueNote')[0].textContent})
 				data.push({name: 'distanceMax', value: $('.wrunner__valueNote')[1].textContent})
